@@ -1,0 +1,16 @@
+[Unit]
+Description=SoumyaFlow Backend
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/var/www/soumyaflow/task-manager-backend
+Environment=PORT=3000
+Environment=FRONTEND_DIR=/var/www/soumyaflow/task-manager-frontend
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
