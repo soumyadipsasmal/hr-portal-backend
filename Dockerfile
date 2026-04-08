@@ -7,7 +7,7 @@ COPY default-state.js ./
 COPY server.js ./
 COPY data ./data
 
-EXPOSE 3000
+EXPOSE 5000
 
 CMD ["node", "server.js"]
 
