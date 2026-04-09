@@ -4,7 +4,8 @@ const path = require("path");
 const { URL } = require("url");
 const getDefaultState = require("./default-state");
 
-const PORT = Number(process.env.PORT || 3000);
+// const PORT = Number(process.env.PORT || 3000);
+const PORT = Number(process.env.PORT || 5000);
 const FRONTEND_DIR = process.env.FRONTEND_DIR
   ? path.resolve(process.env.FRONTEND_DIR)
   : path.join(__dirname, "..", "task-manager-frontend");
@@ -30,10 +31,12 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`SoumyaFlow server running at http://localhost:${PORT}`);
+// server.listen(PORT, () => {
+//   console.log(`SoumyaFlow server running at http://localhost:${PORT}`);
+// });
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`SoumyaFlow server running at http://0.0.0.0:${PORT}`);
 });
-
 async function handleApi(req, res, url) {
   const { pathname } = url;
 
