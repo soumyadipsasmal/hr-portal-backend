@@ -16,8 +16,34 @@ const ADMIN_ROLES = new Set(["Admin", "Manager", "HR"]);
 
 ensureStore();
 
+// const server = http.createServer(async (req, res) => {
+//   try {
+//     const url = new URL(req.url, `http://${req.headers.host}`);
+
+//     if (url.pathname.startsWith("/api/")) {
+//       await handleApi(req, res, url);
+//       return;
+//     }
+
+//     serveStatic(res, url.pathname);
+//   } catch (error) {
+//     sendJson(res, 500, { error: error.message || "Internal server error" });
+//   }
+// });
 const server = http.createServer(async (req, res) => {
   try {
+    // ✅ CORS HEADERS (VERY IMPORTANT)
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+    // ✅ HANDLE PREFLIGHT REQUEST
+    if (req.method === "OPTIONS") {
+      res.writeHead(200);
+      res.end();
+      return;
+    }
+
     const url = new URL(req.url, `http://${req.headers.host}`);
 
     if (url.pathname.startsWith("/api/")) {
