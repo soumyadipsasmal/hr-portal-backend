@@ -9,6 +9,7 @@
 # COPY data ./data
 
 # EXPOSE 5000
+# RUN npm install
 
 # CMD ["node", "server.js"]
 
