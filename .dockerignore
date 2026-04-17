@@ -3,3 +3,4 @@ README.md
 LICENSE
 DEPLOY_AWS.md
 .dockerignore
+# Ignore node_modules and build artifacts
